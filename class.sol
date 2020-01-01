@@ -135,4 +135,39 @@ struct Student{
      return st2.name;
  }
  */
+ uint ageMate = 65;
+
+ modifier findAge(){
+     if( ageMate > 60){
+         _;
+     }
+ }
+ function myNewFunction() public view findAge returns(uint){
+          return 45;
+ }
+ function myNewFunction2() public view findAge returns(bool){
+     
+     return false;
+ }
+ uint ageMate1 = 65;
+
+ modifier findAge1(uint ageMate1){ // also can give multiple values. eg. uint,bool
+     if( ageMate1 > 60){
+         _;
+     }
+ }
+ function myNewFunction3(uint b) public view findAge1(b) returns(uint){ // user also can give value
+          return 45;
+ }
+ function myNewFunction4() public view findAge1(45) returns(bool){
+     
+     return false;
+ }
+                  // Events
+                  
+    event ageReed(uint);
+    function myValues( uint a) public returns(uint){
+        emit ageReed(a);
+        return 56;
+    }
  }
